@@ -19,7 +19,7 @@
 \maketitle
 
 \section*{Initial setup}
-\noindent The goal of this homework is to get you to install and integrate Anaconda, Overleaf, and GitHub.  Please follow these initial installation instructions that you will need to complete all of the homeworks:
+\noindent The goal of this homework is to get you to install and integrate Anaconda, Overleaf, and GitHub.  Please follow these initial installation instructions that you will need to complete all of the homework assignments:
 \begin{enumerate}
     \item Register for free accounts with GitHub and Overleaf as specified in the homework guidelines.
     \item Download Python via the Anaconda distribution and GitHub desktop as specified in the homework guidelines.
@@ -31,17 +31,17 @@
 
 \section*{Setting up your homework repository}
 
-For this homework, you will create a homework repository in which you will save all of your homework code and output to turn in to me.  To do this, you will exactly replicate the files in the \verb!sample_code! folder in the repository I shared with you.  This exercise will help you to integrate all of these tools into one automated workflow that is reproducible and able to be shared.  To do this, follow these steps (there are other, arguably better ways to do these things, but I am just sharing what I have come to---next year these processes will be updated as I learn more!):
+For this homework, you will create a homework repository in which you will save all of your homework code and output to turn in to me.  To do this, you will exactly replicate the files in the \verb!sample_code! folder in the repository I shared with you.  This exercise will help you to integrate all of these tools into one automated workflow that is reproducible and able to be shared.  To do this, follow these steps (there are other, arguably better ways to do these things, but I am just sharing what I have found most convenient so far---next year these processes will be updated as I learn more!):
 
 Set up a repository using GitHub desktop.
 \begin{enumerate}
     \item In GitHub desktop, create a new repository using \verb!File, New repository!.  Name it \verb!phdee-2021-XX! where you replace \verb!XX! with your own initials. You can create this anywhere on your local system that you would like. Check the box to initialize the repository with a readme.  This will create a folder called \verb!phdee-2021-XX! on your computer.
-    \item In your repository, create a subfolder called \verb!homework1!.  Within that subfolder, create two subfolders: one for code called \verb!code! and one for TeX output called \verb!tex!.  For an example, see the \verb!sample_code! folder.
+    \item In your repository, create a subfolder called \verb!homework1!.  Within that subfolder, create two subfolders: one for code called \verb!code! and one for TeX output called \verb!tex!.  In each subfolder, I like to copy and paste a readme file  to get it started.  For an example of the repository setup, refer to the \verb!sample_code! folder.
 \end{enumerate}
-Now, copy my Python script, run it, and push the script and output to GitHub:
+Now, copy my \verb!sample.py! Python script from the \verb!phdee-2021-homework/sample_code/code! folder, run it, and push the script and output to GitHub:
 \begin{enumerate}
-    \item Open up Spyder in Anaconda.  Create a new Python script copying the sample code contained in \verb!Sample.py! in the repository I shared with you.
-    \item Edit the directory paths \verb!datapath! and \verb!outputpath! so that they match the subfolders you created.
+    \item Open up Spyder in Anaconda.  Create a new Python script copying the sample code contained in \verb!sample.py! in the repository I shared with you.
+    \item Edit the directory path \verb!outputpath! so that they match the path to the subfolders you created.
     \item Save your .py script in your code subfolder.
     \item Run the .py code (and fix any errors if necessary).  In your output folder, you should have two .tex files and two .eps files.
     \item In GitHub desktop, commit these changes to the main branch.  Then publish your repository to GitHub.
@@ -50,11 +50,11 @@ You now have saved a record of your code and your output to GitHub.  Next, you w
 \begin{enumerate}
     \item From the Overleaf main page, click new project and use the option to import from GitHub.  You should be able to import your homework repository \verb!phdee-2021-XX!.  Pull any changes from GitHub to Overleaf if necessary.
     \item In Overleaf, create a new .tex file and copy and paste the text from my \verb!phdee-homework/sample_code/tex/main.tex! file in the \verb!sample_code/tex! folder.  Click the green button to compile it.
-    \item You will notice some errors or warnings in the paper icon next to the compile button.  One of the errors is that you need to include a bibliography file to use with natbib. Create in your output folder a file called \verb!sampleref.bib! and copy and paste the content in \verb!phdee-homework/sample_code/tex/sampleref.bib! to create the file.
-    \item Recompile your main file and fix any errors or warnings until you have an error-free pdf.  In Overleaf, use the menu button, click GitHub, and push your changes to your GitHub repository.
+    \item You will notice some errors or warnings in the paper icon next to the compile button.  One of the errors is that you need to include a bibliography file to use with natbib. Create in your output folder a file called \verb!sampleref.bib! and copy and paste the content from \verb!phdee-2021-homework/sample_code/output/sampleref.bib! to create the file.
+    \item Recompile your main file and fix any errors or warnings until you have an error-free pdf.  In Overleaf, use the menu button, click GitHub, and push your changes to your GitHub repository.  This synchronizes your Overleaf with the GitHub repository.
     \item Finally, from Overleaf, download the .pdf file you have created, save it in your homework 1 folder, and push this change to GitHub.
 \end{enumerate}
-Your \verb!homework1! folder in your \verb!phdee-XX! repository should now look exactly like my \verb!sample_code! folder.
+Your \verb!homework1! folder in your \verb!phdee-XX! repository should now look exactly like my \verb!sample_code! folder.  If not, figure out where you went wrong and troubleshoot it.
 
 \section*{How do I turn in this homework?}
 
