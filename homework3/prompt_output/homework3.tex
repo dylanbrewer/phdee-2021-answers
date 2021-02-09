@@ -1,0 +1,48 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage[letterpaper, portrait, margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{amsmath}
+
+\usepackage{titlesec}
+
+\titleformat{\section}
+{\normalfont\Large\bfseries}{\thesection}{1em}{}[{\titlerule[0.8pt]}]
+  
+\title{Homework 3}
+\author{Economics 7103}
+\date{Due Tuesday, February 16th by 11:59 pm}
+  
+\begin{document}
+  
+\maketitle
+
+\noindent You have access to imaginary data on an energy-efficiency retrofit program in Atlanta \textit{kwh.csv} (the same as the previous homework) and you are interested in whether the program reduced energy use.  In your dataset is the following information:
+\begin{table}[h]
+    \centering
+    \begin{tabular}{l|l}
+        Variable & Description \\ \hline
+         \textit{electricity} & kWh of electricity used by the household in the month  \\
+         \textit{sqft} & Square feet of the home \\
+         \textit{retrofit} & = 1 if the home received a retrofit \\
+         \textit{temp} & The outdoor average temperature ($^\circ$ F) during the month at the home's location \\
+    \end{tabular}
+    \caption{Variable descriptions for homework 3.}
+    \label{tab:variables}
+\end{table}
+After recruiting the households for the program, you assigned them to treatment and control groups.  Treatment homes received the retrofits on the first of the month and control homes did not have any work done.
+
+\begin{enumerate}
+    \item Suppose that for a home $i$, you think the underlying relationship between electricity use and predictor variables is $y_i = e^{\alpha} \delta^{d_i} z_i^{\gamma}  e^{\eta_i} $ where $e$ is Euler's number or the base of the natural logarithm, $d_i$ is a binary variable equal to one if home $i$ received the retrofit program, $z_i$ is a vector of the other control variables, $\eta_i$ is unobserved error, and  $\lbrace \alpha,\delta,\gamma \rbrace$ are parameters to estimate.
+    \begin{enumerate}[label=(\alph*)]
+        \item Show that $ln(y_i) = \alpha + ln(\delta) d_i + \gamma ln(z_i) + \eta_i$
+        \item What is the intuitive interpretation of $\delta$?
+        \item Show that $\frac{\Delta y_i}{\Delta d_i} = \frac{\delta - 1}{\delta^{d_i}}y_i$.  What is the intuitive interpretation of $\frac{\Delta y}{\Delta d_i}$?
+        \item Show that $\frac{\partial y_i}{\partial z_i} = \gamma \frac{y_i}{z_i}$.  What is the intuitive interpretation of $\frac{\partial y_i}{\partial z_i}$ when $z_i$ is the size of the home in square feet?
+        \item Estimate the log-transformed equation via ordinary least squares on the transformed parameters using any algorithm you would like. Save the coefficient estimates and the average marginal effects estimates of $z_i$ and $d_i$ $\left( \frac{d y_i}{d z_i} \text{ and } \frac{\Delta y}{\Delta d_i}\right)$. Bootstrap the 95\% confidence intervals of the coefficient estimates and the marginal effects estimates using 1000 sampling replications.  Display the results in a table with three columns (one for the variable name, one for the coefficient estimate, and one for the marginal effect estimate).  Show the 95\% confidence intervals for each estimate under each number.
+        \item Graph the average marginal effects of outdoor temperature and square feet of the home with bands for their confidence intervals so that they are easy to interpret and compare.
+        \end{enumerate}
+\end{enumerate}
+
+\end{document}
