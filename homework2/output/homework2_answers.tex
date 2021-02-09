@@ -1,0 +1,46 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage[letterpaper, portrait, margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{graphicx}
+
+\usepackage{titlesec}
+
+\titleformat{\section}
+{\normalfont\Large\bfseries}{\thesection}{1em}{}[{\titlerule[0.8pt]}]
+  
+\title{Homework 2 Answers}
+\author{Economics 7103}
+\date{Spring semester 2021}
+  
+\begin{document}
+  
+\maketitle
+
+\noindent 1. See table \ref{tab:btable}.  If randomization worked, the simple difference-in-means is an unbiased estimate of the treatment effect.
+\begin{table}[h]
+    \centering
+    \input{btable.tex}
+    \caption{Means by treatment and control group in the sample.  The p value is from a two-way $t$-test for equivalence of means.}
+    \label{tab:btable}
+\end{table}
+
+\noindent 2. See figure \ref{fig:treatmenthist}, which is non-parametric evidence that the program worked:
+\begin{figure}[h]
+    \centering
+    \includegraphics{treatmenthist.eps}
+    \caption{Caption}
+    \label{fig:treatmenthist}
+\end{figure}
+
+\noindent 3. Each method produces quite similar results that probably only differ in rounding error:
+\begin{table}[h]
+    \centering
+   \input{outputtable3.tex}
+    \caption{Regression coefficients from OLS by hand (a), simulated OLS (b), and using the Statsmodels package (c).}
+    \label{tab:outputtable3}
+\end{table}
+\end{document}
