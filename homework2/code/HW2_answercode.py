@@ -123,7 +123,7 @@ betaolsb = opt.minimize(my_leastsq,np.array([0,1,1,1]).T, args = (Yvar, Xvar)).x
 nobsb, = Yvar.shape
 
 ## Part (c)
-### Simply call the statsmodels function
+### Simply call the statsmodels function.  Now there is an (arguably) easier way to do this using R-style syntax with an equation.
 olsc = sm.OLS(kwh['electricity'],Xvar).fit()
 betaolsc = olsc.params.to_numpy()
 nobsc = olsc.nobs

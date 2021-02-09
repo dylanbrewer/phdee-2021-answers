@@ -1,4 +1,4 @@
-# Homework 1 data generation code
+# Homework 2 data generation code
 
 # Clear all
 
