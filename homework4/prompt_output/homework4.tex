@@ -1,0 +1,59 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage[letterpaper, portrait, margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{amsmath}
+
+\usepackage{titlesec}
+
+\titleformat{\section}
+{\normalfont\Large\bfseries}{\thesection}{1em}{}[{\titlerule[0.8pt]}]
+  
+\title{Homework 4}
+\author{Economics 7103}
+\date{Due Sunday, February 21 by 11:59 pm}
+  
+\begin{document}
+  
+\maketitle
+
+\noindent You have imaginary data on the monthly yields for Pacific fish trawling companies (\textit{fishbycatch.csv}).  An environmental nonprofit targeted these firms and implemented a program designed to reduce bycatch.  As part of the program, the nonprofit contacted firm managers and provided information about best practices to reduce bycatch.  The program was implemented in two phases.  In January 2018, the nonprofit contacted half of the firms.  The next year in January 2019, the nonprofit contacted the remaining firms.
+
+You are interested in whether the program worked or not and decide to use this panel data to empirically estimate the effect of the program.  You realize that you have a treatment and control group in pre- and post-treatment periods due to the program's rollout, so you think a difference-in-differences design is a good approach.  You have the following data:
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{l|l}
+        Variable & Description \\ \hline
+         \textit{firm} & Firm identification number  \\
+         \textit{shrimp*} & Pounds of shrimp in month * \\
+         \textit{salmon*} & Pounds of salmon in month * \\
+         \textit{bycatch*} & Pounds of bycatch in month * \\
+         \textit{firmsize} & Size of fishing fleet \\
+         \textit{treated} & =1 if firm received information treatment in January 2018 \\
+    \end{tabular}
+    \caption{Variable descriptions for homework 3.}
+    \label{tab:variables}
+\end{table}
+
+Note that to convert these panel data from wide form to long form, you can use the Pandas \verb!wide_to_long()! function.
+
+\begin{enumerate}
+    \item Visually inspect the bycatch by month before and after treatment for treated and control groups by creating a line plot for months in 2017 and 2018.  Does it appear that there are parallel trends before treatment? (Hint: I found the Pandas function \verb!groupby()! useful.)
+    \item Estimate the treatment effect of the program on bycatch using the sample analog of the population difference-in-differences for treatment and control groups in December 2017 and January 2018.  The population difference-in-differences is:
+    \begin{align}
+        DID =& \lbrace E[Y_{igt}|g(i)=treat, t=Post] - E[Y_{igt}|g(i) = treat, t=Pre] \rbrace \\
+        &- \lbrace E[Y_{igt}|g(i) = control, t = Post] - E[Y_{igt}|g(i) = control, t = Pre] \rbrace.
+    \end{align}
+    Simply report the estimate without a standard error.  What is the intuition of the estimator?
+    \item Estimate the treatment effect of the program on bycatch using a regression-based two-period difference-in-differences estimator with estimating equation:
+    \begin{align}
+        bycatch_{i,t} = \alpha + \lambda_{t=2017} + \gamma g(i) + \delta treat_{i,t} + \varepsilon_{i,t},
+    \end{align}
+    where $\lambda_{t=2017}$ is a separate intercept for the pre-period (December 2017), $g(i)$ is an indicator that firm $i$ is in the treatment group, and $treat_{i,t}$ is an indicator variable equal to one when a firm is treated.  Your estimating sample should include the observations in December 2017 and January 2018 only.  Report the results in a table with standard errors or confidence intervals calculated using clustered standard errors at the firm level.  How does this result compare to your previous calculation?
+    
+\end{enumerate}
+
+
+\end{document}
