@@ -1,0 +1,54 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage[letterpaper, portrait, margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{amsmath}
+
+\usepackage{titlesec}
+
+\titleformat{\section}
+{\normalfont\Large\bfseries}{\thesection}{1em}{}[{\titlerule[0.8pt]}]
+  
+\title{Homework 6}
+\author{Economics 7103}
+\date{Due Sunday, March 7th}
+  
+\begin{document}
+  
+\maketitle
+
+\noindent This assignment uses the data from the previous homework.
+
+You have imaginary data on the monthly yields for Pacific fish trawling companies (\textit{fishbycatch.csv}).  An environmental nonprofit targeted these firms and implemented a program designed to reduce bycatch.  As part of the program, the nonprofit contacted firm managers and provided information about best practices to reduce bycatch.  The program was implemented in two phases.  In January 2018, the nonprofit contacted half of the firms.  The next year in January 2019, the nonprofit contacted the remaining firms.
+
+You are interested in whether the program worked or not and decide to use this panel data to empirically estimate the effect of the program.  You realize that you have a treatment and control group in pre- and post-treatment periods due to the program's rollout, so you think a difference-in-differences design is a good approach.  You have the following data:
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{l|l}
+        Variable & Description \\ \hline
+         \textit{firm} & Firm identification number  \\
+         \textit{shrimp*} & Pounds of shrimp in month * \\
+         \textit{salmon*} & Pounds of salmon in month * \\
+         \textit{bycatch*} & Pounds of bycatch in month * \\
+         \textit{firmsize} & Size of fishing fleet \\
+         \textit{treated} & =1 if firm received information treatment in January 2018 \\
+    \end{tabular}
+    \caption{Variable descriptions for homework 5.}
+    \label{tab:variables4}
+\end{table}
+
+\begin{enumerate}
+    \item You now would like to allow and control for firm-specific fixed-effects.  In particular, you would like to allow for an unobserved effect $c_i$ that varies at the firm level but not over time:
+    \begin{align}
+        bycatch_{i,t} = c_i + \lambda_t + \delta treat_{i,t} + \beta X_{i,t} + u_{i,t}.
+    \end{align}
+    \begin{enumerate} [label=(\alph*)]
+        \item Generate indicator variables for each firm.  Include these indicator variables in your OLS regression to control for fixed effects directly.  
+        \item Perform the ``within-transformation" on all of the dependent and independent variables by demeaning each variable (i.e. instead of estimating $ y_{i,t} = \beta x_{i,t} + \xi_{i,t}$, estimate $y_{i,t} - \Bar{y}_i = \beta (x_{i,t} - \Bar{x}_i) + e_{i,t}$).
+        \item Display the results of your estimates from (a) and (b) in the same table, using the same standard errors or confidence intervals from Homework assignments 3 and 4.  Omit the estimates of the coefficients on the month and firm indicators in your table.  How do the results from (b) compare to (a)?  How do these estimates compare to the previous estimates of the treatment effect and how does the interpretation change? (Note for the future that standard errors from (a) are typically ``wrong", but do not worry about that for this homework.  In addition, (a) is computationally costly when the panel size is large---in general you should use the within transformation to control for fixed effects.)
+    \end{enumerate}
+\end{enumerate}
+
+\end{document}
