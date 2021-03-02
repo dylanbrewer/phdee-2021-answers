@@ -1,0 +1,34 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage[letterpaper, portrait, margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{graphicx}
+
+\usepackage{titlesec}
+
+\titleformat{\section}
+{\normalfont\Large\bfseries}{\thesection}{1em}{}[{\titlerule[0.8pt]}]
+  
+\title{Homework 5 Answers}
+\author{Economics 7103}
+  
+\begin{document}
+  
+\maketitle
+
+\begin{enumerate}
+\item Results for the regression are in column 1 of table \ref{tab:hw4_output}.  The difference-in-differences estimate has somewhat shrunk to -8956.78.  The interpretation has also slightly changed: the estimate implies that the average monthly bycatch per firm in the treated group declined by 8957 pounds from the pre-period relative to firms in the control group over the same time period.  In addition, the estimate now has increased precision (tighter confidence interval) due to additional observations and variables.  
+\item Results for the regression are in column 2 of table \ref{tab:hw4_output}.  The difference-in-differences estimate has again shrunk relative to the first specification.  In addition, we can see that much of the difference between treatment group and control group that was being captured by the treatment group variable can be explained by differences in shrimp and salmon harvest.  Similarly, much of the variation in the constant term has now been absorbed by the covariates.  The interpretation again changes slightly: the estimate implies that the average monthly bycatch per firm in the treated group declined by 8957 pounds from the pre-period relative to firms in the control group over the same time period, holding shrimp harvest, salmon harvest, and firm size fixed.  Finally, the estimate is again more precise due to the additional control variables.
+\end{enumerate}
+
+\begin{table}[h]
+    \centering
+    \input{homework5/output/hw5_output}
+    \caption{Output from regression specifications 1 and 2.  The estimate of interest is the coefficient on the ``Treated" variable. 95\% confidence intervals constructed using cluster-robust (at the firm level) standard errors. }
+    \label{tab:hw4_output}
+\end{table}{}
+
+\end{document}
