@@ -1,0 +1,36 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage[letterpaper, portrait, margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{graphicx}
+
+\usepackage{titlesec}
+
+\titleformat{\section}
+{\normalfont\Large\bfseries}{\thesection}{1em}{}[{\titlerule[0.8pt]}]
+  
+\title{Homework 6 Answers}
+\author{Economics 7103}
+\date{}
+  
+\begin{document}
+  
+\maketitle
+
+\begin{enumerate}[label=(\alph*)]
+    \item See table \ref{tab:outputhw5}, column (a).
+    \item See table \ref{tab:outputhw5}, column (b).
+    \item The estimates from (a) and (b) are equivalent, but as noted the standard errors are not correct when using the indicator-variable approach.  Relative to previous homework assignments, the estimates are again more precise.  In general, this is the approach you want to take when estimating the treatment effect of something in a panel data setting: flexible time controls, fixed effects, and control variables that change over time and by firm.  You could generate and add additional controls to improve the fit more depending on the context.  The interpretation changes when controlling for fixed effects and estimating just using the \textit{within}-firm variation: the fixed-effects estimate implies that within firms, the average monthly bycatch declined by 8085 pounds following the treatment and holding shrimp and salmon harvest levels equal.
+\end{enumerate}
+
+\begin{table}[h]
+    \centering
+    \input{Homework6/outputhw6.tex}
+    \caption{Fixed-effects regression estimates.  95\% confidence intervals constructed using cluster-robust (at the firm level) standard errors.}
+    \label{tab:outputhw5}
+\end{table}
+
+\end{document}
