@@ -97,4 +97,4 @@ outputhw5.index = pd.concat([pd.Series(['Treated', 'Shrimp', 'Salmon']),pd.Serie
 outputhw5 = outputhw5.append(pd.DataFrame([[str(nobs1),str(nobs2)], ['Y', 'Y'], ['Y','Y']], index = ['Observations', 'Month indicators', 'Fixed effects'], columns = ['(a)', '(b)']))
 
 os.chdir(outputpath)
-outputhw5.to_latex('outputhw5.tex',column_format = 'lcc', na_rep = ' ')
+outputhw5.to_latex('outputhw6.tex',column_format = 'lcc', na_rep = ' ')
