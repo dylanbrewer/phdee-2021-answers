@@ -1,0 +1,49 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage[letterpaper, portrait, margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{amsmath}
+
+\usepackage{titlesec}
+
+\titleformat{\section}
+{\normalfont\Large\bfseries}{\thesection}{1em}{}[{\titlerule[0.8pt]}]
+  
+\title{Homework 8}
+\author{Economics 7103}
+  
+\begin{document}
+
+\maketitle
+
+\noindent This assignment uses the same data as the previous assignment.
+
+\noindent You have access to imaginary vehicle sales data from 2017 (\textit{instrumentalvehicles.csv}).  You are interested in estimating the hedonic price of an additional mile per gallon as part of a larger analysis of willingness to pay for fuel efficiency.  In your data, you have the following variables:
+\begin{table}[h]
+    \centering
+    \begin{tabular}{l|l}
+        Variable & Description \\ \hline
+         \textit{price} & Sales price of the vehicle in USD  \\
+         \textit{car} & Class of the vehicle. =1 if the vehicle is a sedan, =0 if the vehicle is an SUV \\
+         \textit{mpg} & Fuel efficiency in miles per gallon \\
+         \textit{weight} & Weight of the vehicle in pounds \\
+         \textit{height} & Height of the vehicle in inches \\
+         \textit{length} & Length of the vehicle in inches \\
+    \end{tabular}
+    \caption{Variable descriptions for homework 7.}
+    \label{tab:variables7}
+\end{table}
+
+\textbf{New twist}: You have been told that there is a strange policy that required a specific safety technology for vehicles longer than 225 inches.  The side effect of the policy was that every vehicle equipped with the technology is significantly less fuel-efficient.  You think you may be able to exploit the policy cutoff using a regression-discontinuity design.
+
+\begin{enumerate}
+    \item Do you think that this design should be a sharp or fuzzy RD? Explain.
+    \item Create a scatter plot with $mpg$ on the $y$-axis and $length-cutoff$ on the $x$-axis with a line at the RD cutoff.  Is there visual evidence of bunching?  Is there visual evidence of a discontinuity?
+    \item Fit a first-order polynomial to both sides of the cutoff in a regression discontinuity design.  Plot the resulting polynomial over a scatterplot and estimate the impact of the policy on fuel efficiency around the cutoff.
+    \item Fit a second-order polynomial to both sides of the cutoff in a regression discontinuity design.  Plot the resulting polynomial over a scatterplot and estimate the impact of the policy on fuel efficiency around the cutoff.
+    \item Fit a fifth-order polynomial to both sides of the cutoff in a regression discontinuity design.  Plot the resulting polynomial over a scatterplot and estimate the impact of the policy on fuel efficiency around the cutoff.
+    \item Using the discontinuity as an instrument for miles per gallon, estimate the impact of $mpg$ on the vehicle's sale price.  Use whatever degree polynomial you see fit for the first stage and explain your choice.  In the hedonic regression, control for the class of the vehicle by including $car_v$ as in Homework 6.  Report the second-stage regression results in a nicely formatted table using confidence intervals or standard errors of your choice (do not report the first stage F statistic).  Do you think this is a valid instrument?
+\end{enumerate}
+
+\end{document}
