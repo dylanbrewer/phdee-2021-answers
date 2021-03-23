@@ -1,0 +1,58 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage[letterpaper, portrait, margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{amsmath}
+
+\usepackage{titlesec}
+
+\titleformat{\section}
+{\normalfont\Large\bfseries}{\thesection}{1em}{}[{\titlerule[0.8pt]}]
+  
+\title{Homework 9}
+\author{Economics 7103}
+  
+\begin{document}
+  
+\maketitle
+
+\noindent This assignment builds upon the data from homework assignments 4-6.
+\medskip
+
+You have imaginary data on the monthly yields for Pacific fish trawling companies.  An environmental nonprofit targeted these firms and implemented a program designed to reduce bycatch.  As part of the program, the nonprofit contacted firm managers and provided information about best practices to reduce bycatch.  The program was implemented in two phases.  In January 2018, the nonprofit contacted half of the firms.  The next year in January 2019, the nonprofit contacted the remaining firms.
+
+Previously you had access to the data from 2017-2018.  You now have an updated dataset with data from 2019 as well.  This data is called \verb!fishbycatchupdated.csv!.
+
+You are interested in whether the program worked or not and decide to use this panel data to empirically estimate the effect of the program.  You now realize that you have a staggered adoption design and that to incorporate the new data you will have to use something different than the standard two-way fixed effects approach.  You have the following data:
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{l|l}
+        Variable & Description \\ \hline
+         \textit{firm} & Firm identification number  \\
+         \textit{shrimp*} & Pounds of shrimp in month * \\
+         \textit{salmon*} & Pounds of salmon in month * \\
+         \textit{bycatch*} & Pounds of bycatch in month * \\
+         \textit{firmsize} & Size of fishing fleet \\
+         \textit{treated} & =1 if firm received information treatment in January 2018 (month 13) \\
+            & =0 if firm received information treatment in January 2019 (month 25)
+    \end{tabular}
+    \caption{Variable descriptions for homework 5.}
+    \label{tab:variables4}
+\end{table}
+
+Use Stata/MP 16 on the IAC VLab (\url{https://it.iac.gatech.edu/services/vlab}).  Instead of turning in a Python script, you will turn in a .do file that generates your output.  Note that to convert these panel data from wide to long form, you can use the Stata command \verb!reshape!.
+
+\begin{enumerate}
+    \item Visually inspect the bycatch by treatment group as the treatment rolled out to each group over time.  Do this by creating a line plot for months in 2017, 2018, and 2019.  (Hint: Use \verb!twoway line! in Stata).
+    \item Using Stata's \verb!xtreg, fe! command, estimate the following two-way fixed effects regression (using the pre-coded within-estimator): $$bycatch_{i,t} = c_i + \lambda_t + \delta treat_{i,t} + \beta X_{i,t} + u_{i,t}.$$  Cluster the standard errors at the firm level using the command's built-in standard errors.  Report the coefficient estimates \(\hat{\delta}\) and \(\hat{\beta}\) and clustered standard errors in a nicely-formatted LaTeX table using the Stata command \verb!outreg2!.
+    \item Using Stata's \verb!reghdfe! command, estimate the same two-way fixed effects regression by absorbing the firm and month indicator variables.  Cluster the standard errors on both firm and month.  Report the coefficient estimates \(\hat{\delta}\) and \(\hat{\beta}\) and two-way clustered standard errors in the same table as your results from 2. (Note that this command is INCREDIBLY fast with very large datasets with many indicator variables.  In this small dataset it is slower than a standard FE regression).
+    \item Intuitively, what is the problem with the two-way fixed effects regressions specified above?  Make references to the papers from class in your answers.
+    \item Install and use the command \verb!twowayfeweights! from de Chaisemartin and D'Haultfoeuille, 2020 to estimate how many of the TWFE weights are negative.  Report the number of negative weights.
+    \item Install and use the command \verb!did_multiplegt! from de Chaisemartin and D'Haultfoeuille, 2020 to estimate the \(DID_M\) estimate.  Use 50 bootstrap replications for the standard errors and use the cluster bootstrap at the firm level.   Report the coefficient estimates \(\hat{\delta}\) and \(\hat{\beta}\) and two-way clustered standard errors in the same table as your results from 2 and 3.
+    \item Drop the months from 2019 and recalculate how many TWFE weights are negative.  What has changed and why?
+\end{enumerate}
+
+
+\end{document}
