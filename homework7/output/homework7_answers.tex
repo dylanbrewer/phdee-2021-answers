@@ -1,0 +1,44 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage[letterpaper, portrait, margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{graphicx}
+
+\usepackage{titlesec}
+
+\titleformat{\section}
+{\normalfont\Large\bfseries}{\thesection}{1em}{}[{\titlerule[0.8pt]}]
+  
+\title{Homework 7 Answers}
+\author{Economics 7103}
+\date{ }
+  
+\begin{document}
+  
+\maketitle
+
+\begin{enumerate}
+    \item The OLS estimate is -22.21, which implies that within a vehicle class, an additional mile per gallon \textit{decreases} the sales price by \$22.21 on average.
+    \item There may be several reasons that we should not trust the OLS estimate of the coefficient on $mpg$.  One likely source of endogeneity is omitted variables bias: it is likely that unobserved attributes of the vehicle are correlated with miles per gallon.  Lower fuel efficiency vehicles are often luxury vehicles, so luxury features may be negatively correlated with miles per gallon (and positively correlated with the price), which would negatively bias the coefficient on miles per gallon.
+    \item Two-stage-least-squares estimation:
+\begin{enumerate}[label=(\alph*)]
+    \item See table \ref{tab:hw7ivoutput}, column (a).
+    \item See table \ref{tab:hw7ivoutput}, column (b).
+    \item See table \ref{tab:hw7ivoutput}, column (c).
+    \item The exclusion restriction states that conditional on vehicle class, the excluded instrument should not be correlated with the error term $e$.  Or, the excluded instrument should only influence $price$ through its impact on $mpg$.  It is not likely that any of these instruments would satisfy the exclusion restriction in real life.  More features in a car will likely make it heavier.  Taller vehicles have more cargo space and may sell for more.
+    \item The estimated coefficients and confidence intervals in (a) and (b) are similar.  It is surprising to note that the estimated coefficient changes when you change the functional form of the instrument--despite the assumptions for IV continuing to hold!  In part (c), the estimate goes haywire.  The reason for this is that $height$ is a \textit{weak instrument} for $mpg$.  The rule of thumb for instrument strength is that the first-stage partial F statistic should be approximately 8 or higher.  Using a weak instrument is often \textit{worse} than not using an instrument at all. 
+\end{enumerate}
+\item Using GMM, the estimated coefficient on mpg is 150.43 with 95\% confidence interval (26.856,274.01).  The GMM estimation takes place in one step and so the standard errors are correct, whereas in (a), the standard errors were not adjusted to account for the two-stage estimation.  Also note that for IV estimates that one should use heteroskedasticity-robust or clustered standard errors as the situation calls for.
+\end{enumerate}
+
+\begin{table}[h]
+    \centering
+    \input{homework7/output/hw7output3}
+    \caption{Estimation results from the two-stage-least-squares estimation.  95\% confidence intervals are overestimates of the precision due to the two-stage estimation and should be bootstrapped in practice.}
+    \label{tab:hw7ivoutput}
+\end{table}
+
+\end{document}
